@@ -21,23 +21,31 @@ namespace CoreHambusCommonLibrary.Services
       busInit.CreateDataIfNeeded();
       var source = busInit.DataFolder + "\\hambus.db";
       var connString = $"data source={source}";
-      using (var conn = new SqliteConnection(connString))
+      try
       {
-        conn.Open();
-
-        var command = conn.CreateCommand();
-        command.CommandText = @"SELECT name FROM user WHERE id = $id";
-        command.Parameters.AddWithValue("$id", 1);
-
-        using (var reader = command.ExecuteReader())
+        using (var conn = new SqliteConnection(connString))
         {
-          while (reader.Read())
-          {
-            var name = reader.GetString(0);
+          conn.Open();
 
-            Console.WriteLine($"Hello, {name}!");
+          var command = conn.CreateCommand();
+          command.CommandText = @"SELECT name FROM user WHERE id = $id";
+          command.Parameters.AddWithValue("$id", 1);
+
+          using (var reader = command.ExecuteReader())
+          {
+            while (reader.Read())
+            {
+              var name = reader.GetString(0);
+
+              Console.WriteLine($"Hello, {name}!");
+            }
           }
         }
+      }
+      catch (Exception e)
+      {
+        Console.WriteLine(e.Message);
+
       }
     }
   }
