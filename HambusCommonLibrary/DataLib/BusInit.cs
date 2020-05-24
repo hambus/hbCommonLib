@@ -24,13 +24,13 @@ namespace CoreHambusCommonLibrary.DataLib
     {
       try
       {
-        var filePath = GetLocalAppData() + "\\" + hamBusDir;
+        DataFolder = GetLocalAppData() + "\\" + hamBusDir;
 
-        if (File.Exists(filePath))
+        if (File.Exists(DataFolder))
           throw new Exception($"{hamBusDir} exist as a file.  Cannot continue");
-        if (Directory.Exists(filePath))
+        if (Directory.Exists(DataFolder))
           return;
-        Directory.CreateDirectory(filePath);
+        Directory.CreateDirectory(DataFolder);
       } 
       catch (Exception e)
       {
