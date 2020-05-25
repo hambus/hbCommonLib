@@ -12,7 +12,7 @@ namespace CoreHambusCommonLibrary.DataLib
     public  string hamBusDir = "HamBus";
     public BusInit()
     {
-
+      CreateFolderIfNeeded();
     }
     public string GetLocalAppData()
     {
@@ -20,7 +20,7 @@ namespace CoreHambusCommonLibrary.DataLib
       return filePath;
     }
 
-    public  void CreateDataIfNeeded()
+    public  void CreateFolderIfNeeded()
     {
       try
       {
@@ -36,9 +36,7 @@ namespace CoreHambusCommonLibrary.DataLib
       {
         Console.WriteLine($"Create Data Directory Error: {e.Message}");
         throw e;
-
       }
     }
-
   }
 }
