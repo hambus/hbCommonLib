@@ -14,17 +14,12 @@ namespace CoreHambusCommonLibrary.Services
   public class GlobalDataServiceSqlite : IGlobalDataService
   {
     public int Id { get; set; }
-    public int? Port { get; set; }
     public string Name { get; set; }
     public double Version { get; set; } = 1.0;
-    public string CommPort { get; set; }
-    public int Speed { get; set; }
-    public string Parity { get; set; }
-    public double StopBits { get; set; }
-    public string MasterHost { get; set; }
-
-    public string LocalAppDataPath { get; set; }
-    private string ConnString  { get; set; }
+    public string Host { get; set; }
+    public int? Port { get; set; }
+    public string ConnString { get; set; }
+    public string Configuration { get; set; }
     public BusInit busInit { get; set; } = new BusInit();
 
 
@@ -106,23 +101,19 @@ namespace CoreHambusCommonLibrary.Services
 
     private void CreateInitalEntryForMasterBus(IDbCommand cmd, IDataReader reader)
     {
-      if (Port == null) Port = 7300;
-
-      reader.Close();
-      cmd.CommandText = $"insert into master_conf ( version, port, name) values ( 1.0, {Port}, \"{Name}\")";
-      cmd.ExecuteNonQuery();
+      //if (Port == null) Port = 7300;
+      //var Port = 7300;
+      //reader.Close();
+      //cmd.CommandText = $"insert into master_conf ( version, port, name) values ( 1.0, {Port}, \"{Name}\")";
+      //cmd.ExecuteNonQuery();
     }
 
     private void CreateTable(IDbConnection conn)
     {
       var createCmd = "CREATE table IF NOT EXISTS [master_conf] (" +
         "[id]  INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, " +
-        "[port]  INTEGER NOT NULL DEFAULT 7300, " +
         "[name]  TEXT NOT NULL, " +
-        "[commport]  TEXT, " +
-        "[speed] NUMERIC, " +
-        "[parity]  TEXT, " +
-        "[stopbits] NUMERIC, " +
+        "[Configuration] TEXT" +
         "[version]  NUMERIC NOT NULL DEFAULT 1 " +
          ")";
       Console.WriteLine(createCmd);
