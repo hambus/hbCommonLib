@@ -43,7 +43,7 @@ namespace CoreHambusCommonLibrary.Services
     }
     #endregion
 
-    protected GlobalDataServiceSqlite()
+    public GlobalDataServiceSqlite()
     {
     }
 
@@ -63,9 +63,10 @@ namespace CoreHambusCommonLibrary.Services
             QueryApps(conn);
 
 
-          } catch(Exception ee)
+          }
+          catch (Exception ee)
           {
-            Console.WriteLine($"InitDB {ee.Message}");        
+            Console.WriteLine($"InitDB {ee.Message}");
           }
         }
       }
