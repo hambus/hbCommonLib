@@ -1,42 +1,39 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Security.Authentication;
-using System.Text;
 
 namespace CoreHambusCommonLibrary.DataLib
 {
-  public class BusInit
-  {
-    public  string DataFolder;
-    public  string hamBusDir = "HamBus";
-    public BusInit()
+    public class BusInit
     {
-      CreateFolderIfNeeded();
-    }
-    public string GetLocalAppData()
-    {
-      string filePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-      return filePath;
-    }
+        public string? DataFolder;
+        public string hamBusDir = "HamBus";
+        public BusInit()
+        {
+            CreateFolderIfNeeded();
+        }
+        public string GetLocalAppData()
+        {
+            string filePath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            return filePath;
+        }
 
-    public  void CreateFolderIfNeeded()
-    {
-      try
-      {
-        DataFolder = GetLocalAppData() + "\\" + hamBusDir;
+        public void CreateFolderIfNeeded()
+        {
+            try
+            {
+                DataFolder = GetLocalAppData() + "\\" + hamBusDir;
 
-        if (File.Exists(DataFolder))
-          throw new Exception($"{hamBusDir} exist as a file.  Cannot continue");
-        if (Directory.Exists(DataFolder))
-          return;
-        Directory.CreateDirectory(DataFolder);
-      } 
-      catch (Exception e)
-      {
-        Console.WriteLine($"Create Data Directory Error: {e.Message}");
-        throw e;
-      }
+                if (File.Exists(DataFolder))
+                    throw new Exception($"{hamBusDir} exist as a file.  Cannot continue");
+                if (Directory.Exists(DataFolder))
+                    return;
+                Directory.CreateDirectory(DataFolder);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Create Data Directory Error: {e.Message}");
+                throw e;
+            }
+        }
     }
-  }
 }

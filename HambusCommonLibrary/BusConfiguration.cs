@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CoreHambusCommonLibrary
+﻿namespace CoreHambusCommonLibrary
 {
     public abstract class BusConfiguration
     {

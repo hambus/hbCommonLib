@@ -1,5 +1,5 @@
-﻿using CoreHambusCommonLibrary;
-using System.IO.Ports;
+﻿using System.IO.Ports;
+using CoreHambusCommonLibrary;
 
 namespace HambusCommonLibrary
 {

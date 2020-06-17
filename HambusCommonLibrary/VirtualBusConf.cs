@@ -1,24 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HambusCommonLibrary
+﻿namespace HambusCommonLibrary
 {
 
-  public class VirtualBusConf
-  {
-    public string Host;
-    //public List<CommPortConf> CommPorts;
-
-    //public VirtualBusConf();
-
-    public void AddCommPort(object port)
+    public class VirtualBusConf
     {
+        public string? Host;
+        //public List<CommPortConf> CommPorts;
 
-    }
-    public void RemoveCommPort(object port)
-    {
+        //public VirtualBusConf();
 
+        public void AddCommPort(object port)
+        {
+
+        }
+        public void RemoveCommPort(object port)
+        {
+
+        }
     }
-  }
 }
