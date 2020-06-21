@@ -8,6 +8,7 @@ namespace BusMaster.Model
 {
   public class BusConfigBase
   {
+    public Boolean AcceptRigUpdates { get; set; } = false;
 
   }
 }
