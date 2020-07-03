@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace BusMaster.Model
 {
-  public enum BusType { BusMaster, RigBus, VirtualRigBus, LogBus, RotoBus, ClusterBus}
+  public enum BusType { Unknown=0, BusMaster, RigBus, VirtualRigBus, LogBus, RotoBus, ClusterBus}
   public class BusMasterGroups
   {
     public readonly string UI = "ui";
